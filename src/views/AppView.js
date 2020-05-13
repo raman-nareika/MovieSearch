@@ -4,6 +4,6 @@ export default class AppView {
   }
 
   render() {
-    const gallery = document.createElement("div");
+
   }
 }
