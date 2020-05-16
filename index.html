@@ -8,6 +8,7 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+  <link rel="shortcut icon" href="./favicon.ico">
   <script src="./dist/main.js"></script>
   <title>MovieSearch</title>
 </head>
@@ -21,42 +22,41 @@
   </header>
   <main role="main" class="flex-shrink-0">
     <div class="container">
-      <div class="card-body row no-gutters align-items-center">
-        <div class="col-auto">
-          <i class="fas fa-search h4 text-body"></i>
+      <form id="searchForm">
+        <div class="card-body row no-gutters align-items-center">
+          <div class="col-auto">
+            <i class="fas fa-search h4 text-body"></i>
+          </div>
+          <!--end of col-->
+          <div class="col">
+            <input class="form-control form-control-lg form-control-borderless" type="search"
+              placeholder="Search topics or keywords" autocomplete="off" required tabindex="1">
+          </div>
+          <!--end of col-->
+          <div class="col-auto">
+            <button class="btn btn-lg btn-success" id="search" type="submit">Search</button>
+          </div>
+          <!--end of col-->
         </div>
-        <!--end of col-->
-        <div class="col">
-          <input class="form-control form-control-lg form-control-borderless" type="search"
-            placeholder="Search topics or keywords" autocomplete="off">
-        </div>
-        <!--end of col-->
-        <div class="col-auto">
-          <button class="btn btn-lg btn-success" id="search" type="submit">Search</button>
-        </div>
-        <!--end of col-->
+      </form>
+    </div>
+    <div class="d-flex not-found-alert">
+      <div class="alert alert-danger d-none" role="alert"></div>
+    </div>
+    <div class="d-flex russian-alert">
+      <div class="alert alert-info d-none" role="alert"></div>
+    </div>
+    <!-- Slider main container -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
       </div>
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">Slide 1</div>
-          <div class="swiper-slide">Slide 2</div>
-          <div class="swiper-slide">Slide 3</div>
-          <div class="swiper-slide">Slide 4</div>
-          <div class="swiper-slide">Slide 5</div>
-          <div class="swiper-slide">Slide 6</div>
-          <div class="swiper-slide">Slide 7</div>
-          <div class="swiper-slide">Slide 8</div>
-          <div class="swiper-slide">Slide 9</div>
-          <div class="swiper-slide">Slide 10</div>
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
     </div>
   </main>
   <footer class="footer bg-dark mt-auto py-3">
     <div class="footer__term">RS School 2020q1</div>
-    <div class="footer__gh">Place sticky footer content here.</div>
+    <div class="footer__gh"></div>
   </footer>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

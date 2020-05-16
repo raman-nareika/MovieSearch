@@ -1,5 +1,6 @@
 export default class Card {
-  constructor(title, poster, year, imdRating) {
+  constructor(imdbId, title, poster, year, imdRating) {
+    this.imdbId = imdbId;
     this.title = title;
     this.poster = poster;
     this.year = year;

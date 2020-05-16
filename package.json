@@ -26,7 +26,11 @@
   "scripts": {
     "lint": "eslint ./src/",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --mode development --watch",
-    "build": "webpack --mode production"
+    "run:dev": "webpack-dev-server --mode development --watch",
+    "build:dev": "webpack --mode development",
+    "build:prod": "webpack --mode production"
+  },
+  "dependencies": {
+    "swiper": "^5.3.8"
   }
 }

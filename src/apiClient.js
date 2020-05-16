@@ -4,11 +4,7 @@ export default class ApiClient {
     this.yandexApiKey = yandexApiKey;
   }
 
-  async searchDefault(text) {
-    if (this.isRussian(text)) {
-      text = await this.translate(text);
-    }
-
+  async searchDefault() {
     const url = `http://www.omdbapi.com/?i=tt3896198&apikey=${this.omdbApiKey}`;
     const response = await fetch(url, {
       method: "GET",
@@ -18,35 +14,20 @@ export default class ApiClient {
   }
 
   async search(text) {
-    if (this.isRussian(text)) {
-      text = await this.translate(text);
-    }
-
-    const url = `http://www.omdbapi.com/?apikey=6aa02bef&s=${text}`;
+    const url = `http://www.omdbapi.com/?apikey=${this.omdbApiKey}&s=${text}`;
     const response = await fetch(url, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
     });
-    const json = await response.json();
-    return json;
+    const jsonObject = await response.json();
+    return jsonObject.Search;
   }
 
-  isRussian(text) {
-    return /[а-яА-Я]+/.test(text);
-  }
-
-  async translate(text) {
-    const url = `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${this.yandexApiKey}&text=${text}&lang=en`;
+  async getRating(id) {
+    const url = `http://www.omdbapi.com/?apikey=${this.omdbApiKey}&i=${id}`;
     const response = await fetch(url, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
     });
-    const responseContent = await response.json();
-    const translation = responseContent.text[0];
-    return translation;
+    const jsonObject = await response.json();
+    return jsonObject.Ratings;
   }
 }
