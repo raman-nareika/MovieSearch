@@ -23,7 +23,9 @@ export default class App {
 
   bind() {
     document.getElementById("searchForm").addEventListener("submit", async (e) => {
+      const spinner = document.querySelector(".spinner-border");
       e.preventDefault();
+      spinner.classList.remove("d-none");
       this.view.hideNotFound();
       const request = document.querySelector("[type='search']").value;
       const trimmedRequest = request.trim();
@@ -33,7 +35,7 @@ export default class App {
         translated = await this.translationService.translate(trimmedRequest);
       }
       const newFilms = await this.service.getFilms(translated || trimmedRequest);
-
+      spinner.classList.add("d-none");
       if (newFilms.length > 0) {
         this.view.updateSlider(newFilms);
         if (translated) {

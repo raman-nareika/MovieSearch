@@ -5,7 +5,7 @@ export default class ApiClient {
   }
 
   async searchDefault() {
-    const url = `http://www.omdbapi.com/?i=tt3896198&apikey=${this.omdbApiKey}`;
+    const url = `https://www.omdbapi.com/?i=tt3896198&apikey=${this.omdbApiKey}`;
     const response = await fetch(url, {
       method: "GET",
     });
@@ -14,7 +14,7 @@ export default class ApiClient {
   }
 
   async search(text) {
-    const url = `http://www.omdbapi.com/?apikey=${this.omdbApiKey}&s=${text}`;
+    const url = `https://www.omdbapi.com/?apikey=${this.omdbApiKey}&s=${text}`;
     const response = await fetch(url, {
       method: "GET",
     });
@@ -23,7 +23,7 @@ export default class ApiClient {
   }
 
   async getRating(id) {
-    const url = `http://www.omdbapi.com/?apikey=${this.omdbApiKey}&i=${id}`;
+    const url = `https://www.omdbapi.com/?apikey=${this.omdbApiKey}&i=${id}`;
     const response = await fetch(url, {
       method: "GET",
     });

@@ -31,6 +31,10 @@
           <div class="col">
             <input class="form-control form-control-lg form-control-borderless" type="search"
               placeholder="Search topics or keywords" autocomplete="off" required tabindex="1">
+            <div class="spinner-border text-dark d-none" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <span class="glyphicon glyphicon-remove-circle searchclear"></span>
           </div>
           <!--end of col-->
           <div class="col-auto">
@@ -52,6 +56,9 @@
       </div>
       <!-- Add Pagination -->
       <div class="swiper-pagination"></div>
+      <!-- Add Arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
   </main>
   <footer class="footer bg-dark mt-auto py-3">

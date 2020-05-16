@@ -9,7 +9,7 @@ export default class FirmService {
   async getDefaultFilms() {
     try {
       const json = await this.client.searchDefault();
-      const films = await FirmService.parseFilms(json);
+      const films = await this.parseFilms(json);
       return films;
     } catch (e) {
       global.console.log(e);
@@ -23,25 +23,23 @@ export default class FirmService {
       return [];
     }
 
-    const films = FirmService.parseFilms(result);
+    const films = this.parseFilms(result);
     return films;
   }
 
-  static async parseFilms(response) {
+  async parseFilms(response) {
     if (Array.isArray(response)) {
-      return Promise.all(response.map((f) => FirmService.mapFilm(f)));
+      return Promise.all(response.map((f) => this.mapFilm(f)));
     }
-    const film = await FirmService.mapFilm(response);
-    global.console.log(film);
-    return [await FirmService.mapFilm(response)];
+    return [await this.mapFilm(response)];
   }
 
-  static async mapFilm(film) {
-    return new Card(film.imdbID, film.Title, await FirmService.getPoster(film.Poster), film.Year,
-      await FirmService.getRating(film.imdbID));
+  async mapFilm(film) {
+    return new Card(film.imdbID, film.Title, await this.getPoster(film.Poster), film.Year,
+      await this.getRating(film.imdbID));
   }
 
-  static async getPoster(url) {
+  async getPoster(url) {
     if (url === "N/A") {
       return "./assets/images/na.png";
     }
@@ -56,9 +54,13 @@ export default class FirmService {
     }
   }
 
-  static async getRating(id) {
-    const ratings = await this.client.getRating(id);
+  async getRating(id) {
+    try {
+      const ratings = await this.client.getRating(id);
 
-    return ratings[0].Value;
+      return ratings[0].Value;
+    } catch (e) {
+      global.console.log(e);
+    }
   }
 }
