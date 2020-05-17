@@ -31,6 +31,10 @@ export default class AppView {
         enabled: true,
       },
       breakpoints: {
+        375: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
         640: {
           slidesPerView: 2,
           spaceBetween: 20,
@@ -38,10 +42,6 @@ export default class AppView {
         768: {
           slidesPerView: 4,
           spaceBetween: 40,
-        },
-        1024: {
-          slidesPerView: 5,
-          spaceBetween: 50,
         },
       },
     });
@@ -61,8 +61,8 @@ export default class AppView {
   arrangeSlides(data) {
     return data.map((film) => {
       let card = `<div class="swiper-slide card"">
-                                <div>
-                                  <h4>
+                                <div class="card__header">
+                                  <h4 title="${film.title}">
                                     <a class="nav-link" href="https://www.imdb.com/title/${film.imdbId}/videogallery" target="_blank">${film.title}</a>
                                   </h3>
                                 </div>

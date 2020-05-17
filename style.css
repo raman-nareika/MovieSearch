@@ -23,8 +23,8 @@
 .swiper-container {
     width: 100%;
 }
+
 .swiper-slide {
-  max-width: 320px;
   max-height: 440px;
     text-align: center;
     font-size: 18px;
@@ -47,8 +47,13 @@
 
 .poster {
     height: 300px;
-    max-width: 350px;
     width: auto;
+}
+
+.swiper-slide,
+.poster,
+.card__header {
+  max-width: 350px;
 }
 
 .footer {
@@ -80,6 +85,14 @@
 .spinner-border {
   height: 32px;
   right: 40px;
+}
+
+.card__header {
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .rating-row {
